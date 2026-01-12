@@ -2,6 +2,7 @@ import Lottie from "lottie-react";
 import SignInAnimation from "../../assets/signin.json";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import SocialLogin from "../shared/SocialLogin";
 
 
 const SignIn = () => {
@@ -56,6 +57,7 @@ const {signInUser} = useContext(AuthContext);
               <button className="btn btn-neutral mt-4">Sign in</button>
             </fieldset>
           </form>
+          <SocialLogin/>
         </div>
       </div>
     </div>

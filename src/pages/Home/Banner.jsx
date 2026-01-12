@@ -12,12 +12,12 @@ const Banner = () => {
          <motion.img
           src={happyTeam}
           animate={{y: [50 , 120 , 50]}} transition={{duration:10, repeat:Infinity}}
-          className="w-60 h-48 rounded-t-[38px] rounded-br-[38px] border-l-3 border-b-3 border-blue-300 shadow-2xl"
+          className="w-72 h-52 rounded-t-[38px] rounded-br-[38px] border-l-3 border-b-3 border-blue-300 shadow-2xl"
         />
          <motion.img
           src={workingTeam}
-          animate={{x: [100 , 160 , 100]}} transition={{duration:10, repeat:Infinity}}
-          className="w-60 h-48 rounded-t-[38px] rounded-bl-[38px] border-r-3 border-b-3 border-blue-300 shadow-2xl"
+          animate={{x: [100 , 170 , 100]}} transition={{duration:10, repeat:Infinity , delay:5}}
+          className="w-72 h-52 rounded-t-[38px] rounded-bl-[38px] border-r-3 border-b-3 border-blue-300 shadow-2xl"
         />
        </div>
         <div className="flex-1">
