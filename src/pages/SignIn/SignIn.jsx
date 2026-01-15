@@ -3,10 +3,14 @@ import SignInAnimation from "../../assets/signin.json";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import SocialLogin from "../shared/SocialLogin";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const SignIn = () => {
 const {signInUser} = useContext(AuthContext);
+const location = useLocation();
+const navigate = useNavigate();
+const from = location?.state || '/';
     
 
 
@@ -17,7 +21,9 @@ const {signInUser} = useContext(AuthContext);
 
     signInUser(email , password)
     .then((result)=>{
+      navigate(from);
         console.log("signed in" , result.user);
+
     })
     .catch((error)=>{
         console.log("Oh no!!" , error.message);
