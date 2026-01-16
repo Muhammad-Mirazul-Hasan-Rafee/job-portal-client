@@ -112,7 +112,7 @@ const JobDetails = () => {
               <FaEnvelope /> {hr_email}
             </p>
 
-            <Link to={`/apply/${_id}`}>
+            <Link to={`/jobApply/${_id}`}>
               <button className="btn btn-primary w-full sm:w-auto">
                 Apply Now
               </button>
@@ -124,4 +124,4 @@ const JobDetails = () => {
   )
 };
 
-export default JobDetails;
+export default JobDetails; 
