@@ -1,4 +1,13 @@
+import Swal from "sweetalert2";
+import useAuth from "../../hooks/UseAuth";
+import { useNavigate } from "react-router-dom";
+
 const AddJob = () => {
+
+  const {user} = useAuth();
+const navigate = useNavigate();
+
+
   const handleAddJob = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -8,21 +17,30 @@ const AddJob = () => {
     newJob.salaryRange = { min, max, currency };
 
     newJob.requirements = newJob.requirements.split("\n");
-    newJob.responsibility = newJob.responsibility.split('\n');
+    newJob.responsibility = newJob.responsibility.split("\n");
     console.log(newJob);
 
-
-    fetch('http://localhost:3000/jobs' , {
-      method: 'POST',
-      headers:{
-        'content-type': 'application/json'
+    fetch("http://localhost:3000/jobs", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
       body: JSON.stringify(newJob),
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Job Created!",
+            icon: "success",
+            draggable: true,
+          });
+
+          navigate('/myPostedJobs');
+        }
+
+        console.log(data);
+      });
   };
   return (
     <div className="min-h-screen bg-base-200 flex items-center justify-center py-10">
@@ -109,7 +127,7 @@ const AddJob = () => {
                 </label>
                 <input
                   type="text"
-                  name="hrname"
+                  name="hr_name"
                   placeholder="HR name"
                   className="input input-bordered w-full"
                   required
@@ -121,8 +139,8 @@ const AddJob = () => {
                   <span className="label-text">HR Email</span>
                 </label>
                 <input
-                  type="email"
-                  name="hremail"
+                  type="email" defaultValue={user?.email}
+                  name="hr_email"
                   placeholder="HR email"
                   className="input input-bordered w-full"
                   required
@@ -162,8 +180,8 @@ const AddJob = () => {
                   className="input input-bordered"
                   required
                 />
-                <select name="currency" className="select select-bordered">
-                  <option disabled selected>
+                <select name="currency" defaultValue="Currency" className="select select-bordered">
+                  <option disabled >
                     Currency
                   </option>
                   <option>BDT</option>
@@ -231,11 +249,25 @@ const AddJob = () => {
                 required
               ></textarea>
             </div>
+                        {/* Deadline */}
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-start">
+               <label className="label lg:col-span-1">
+                <span className="label-text font-medium">Application Deadline</span>
+              </label>
+              <input
+                  type="date"
+                  name="applicationdeadline"
+                  placeholder="applicationdeadline"
+                  className="input input-bordered"
+                  required
+                />
+            </div>
 
             {/* Submit Button */}
             <div className="pt-6">
               <button className="btn btn-primary w-full">Submit Job</button>
             </div>
+
           </form>
         </div>
       </div>
