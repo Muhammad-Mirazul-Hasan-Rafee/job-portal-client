@@ -1,15 +1,27 @@
-import React from 'react';
-import { FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
-import { Link, useLoaderData } from 'react-router-dom';
+import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { Link, useLoaderData } from "react-router-dom";
 
 const JobDetails = () => {
-    const {_id , title , location , jobType , category , applicationDeadline , salaryRange , description , company , requirements , responsibilities ,status , hr_email , company_logo } = useLoaderData();
+  const {
+    _id,
+    title,
+    location,
+    jobType,
+    category,
+    applicationDeadline,
+    salaryRange,
+    description,
+    company,
+    requirements,
+    responsibilities,
+    status,
+    hr_email,
+    company_logo,
+  } = useLoaderData();
 
-    // title , location , jobType , category , applicationDeadline , salaryRange , description , company , requirements , responsibilities ,status , hr_email , company_logo 
-  return(
-       <div className="max-w-6xl mx-auto px-4 my-10">
+  return (
+    <div className="max-w-6xl mx-auto px-4 my-10">
       <div className="card bg-base-100 shadow-md">
-
         {/* ================= Header ================= */}
         <div className="flex flex-col sm:flex-row gap-4 p-5 border-b">
           <img
@@ -34,9 +46,7 @@ const JobDetails = () => {
           <div className="self-start">
             <span
               className={`badge ${
-                status === "active"
-                  ? "badge-success"
-                  : "badge-error"
+                status === "active" ? "badge-success" : "badge-error"
               }`}
             >
               {status}
@@ -46,7 +56,6 @@ const JobDetails = () => {
 
         {/* ================= Body ================= */}
         <div className="card-body space-y-6">
-
           {/* Meta Info */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <p>
@@ -54,28 +63,21 @@ const JobDetails = () => {
               {applicationDeadline}
             </p>
             <p>
-              <span className="font-semibold">Salary:</span>{" "}
-              {salaryRange.min} – {salaryRange.max}{" "}
-              {salaryRange.currency}
+              <span className="font-semibold">Salary:</span> {salaryRange.min} –{" "}
+              {salaryRange.max} {salaryRange.currency}
             </p>
             <p>
-              <span className="font-semibold">Category:</span>{" "}
-              {category}
+              <span className="font-semibold">Category:</span> {category}
             </p>
             <p>
-              <span className="font-semibold">Job Type:</span>{" "}
-              {jobType}
+              <span className="font-semibold">Job Type:</span> {jobType}
             </p>
           </div>
 
           {/* Description */}
           <div>
-            <h3 className="text-lg font-semibold mb-2">
-              Job Description
-            </h3>
-            <p className="text-white leading-relaxed">
-              {description}
-            </p>
+            <h3 className="text-lg font-semibold mb-2">Job Description</h3>
+            <p className="text-white leading-relaxed">{description}</p>
           </div>
 
           {/* Requirements & Responsibilities */}
@@ -95,10 +97,8 @@ const JobDetails = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold mb-2">
-                Responsibilities
-              </h4>
-              <ul className="list-disc list-inside text-white space-y-1">
+              <h4 className="font-semibold mb-2">Responsibilities</h4>
+              <ul className="list-disc list-inside text-shadow-black space-y-1">
                 {responsibilities.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
@@ -121,7 +121,7 @@ const JobDetails = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
-export default JobDetails; 
+export default JobDetails;

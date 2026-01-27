@@ -25,9 +25,7 @@ const Banner = () => {
           transition={{duration:1.7 , delay:1 , ease: easeOut, repeat:Infinity}}
            className="text-5xl font-bold"> Your latest <motion.span  animate={{color:['#D9994C' , '#47C94D' , '06083B' , '#5D66F0']}} transition={{duration:1.6, repeat:Infinity}}>jobs!</motion.span></motion.h1>
           <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+           Find your dream job with us. You represent all the IT jobs that match your skills and expertise.
           </p>
           <button className="btn btn-primary">Get Started</button>
         </div>

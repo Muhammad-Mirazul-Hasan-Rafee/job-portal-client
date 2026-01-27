@@ -23,22 +23,20 @@ const MyPostedJobs = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Job Title</th>
+              <th>Deadline</th>
+              <th>Total Application</th>
             </tr>
           </thead>
           <tbody>
             {
-                jobs.map((job)=> <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
+                jobs.map((job , idx)=> <tr key={idx}>
+              <th>{idx + 1}</th>
+              <td>{job.title}</td>
+              <td>{job.applicationDeadline}</td>
+              <td>{job.applicationCount}</td>
             </tr>)
             }
-            
-   
           </tbody>
         </table>
       </div>

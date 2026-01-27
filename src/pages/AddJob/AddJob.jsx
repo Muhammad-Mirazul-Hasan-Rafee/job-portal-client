@@ -3,10 +3,8 @@ import useAuth from "../../hooks/UseAuth";
 import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
-
-  const {user} = useAuth();
-const navigate = useNavigate();
-
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   const handleAddJob = (e) => {
     e.preventDefault();
@@ -17,7 +15,7 @@ const navigate = useNavigate();
     newJob.salaryRange = { min, max, currency };
 
     newJob.requirements = newJob.requirements.split("\n");
-    newJob.responsibility = newJob.responsibility.split("\n");
+    newJob.responsibilities = newJob.responsibilities.split("\n");
     console.log(newJob);
 
     fetch("http://localhost:3000/jobs", {
@@ -36,7 +34,7 @@ const navigate = useNavigate();
             draggable: true,
           });
 
-          navigate('/myPostedJobs');
+          navigate("/myPostedJobs");
         }
 
         console.log(data);
@@ -87,6 +85,7 @@ const navigate = useNavigate();
                   <span className="label-text">Job Type</span>
                 </label>
                 <select
+                  name="jobType"
                   className="select select-bordered w-full"
                   defaultValue=""
                 >
@@ -105,6 +104,7 @@ const navigate = useNavigate();
                   <span className="label-text">Job Field</span>
                 </label>
                 <select
+                  name="category"
                   className="select select-bordered w-full"
                   defaultValue=""
                 >
@@ -139,7 +139,8 @@ const navigate = useNavigate();
                   <span className="label-text">HR Email</span>
                 </label>
                 <input
-                  type="email" defaultValue={user?.email}
+                  type="email"
+                  defaultValue={user?.email}
                   name="hr_email"
                   placeholder="HR email"
                   className="input input-bordered w-full"
@@ -155,7 +156,7 @@ const navigate = useNavigate();
               </label>
               <input
                 type="text"
-                name="companylogo"
+                name="company_logo"
                 placeholder="Logo URL"
                 className="input input-bordered w-full"
                 required
@@ -180,10 +181,12 @@ const navigate = useNavigate();
                   className="input input-bordered"
                   required
                 />
-                <select name="currency" defaultValue="Currency" className="select select-bordered">
-                  <option disabled >
-                    Currency
-                  </option>
+                <select
+                  name="currency"
+                  defaultValue="Currency"
+                  className="select select-bordered"
+                >
+                  <option disabled>Currency</option>
                   <option>BDT</option>
                   <option>USDT</option>
                   <option>EUR</option>
@@ -244,30 +247,31 @@ const navigate = useNavigate();
 
               <textarea
                 className="textarea textarea-bordered lg:col-span-3"
-                name="responsibility"
+                name="responsibilities"
                 placeholder="Job responsibility"
                 required
               ></textarea>
             </div>
-                        {/* Deadline */}
+            {/* Deadline */}
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-start">
-               <label className="label lg:col-span-1">
-                <span className="label-text font-medium">Application Deadline</span>
+              <label className="label lg:col-span-1">
+                <span className="label-text font-medium">
+                  Application Deadline
+                </span>
               </label>
               <input
-                  type="date"
-                  name="applicationdeadline"
-                  placeholder="applicationdeadline"
-                  className="input input-bordered"
-                  required
-                />
+                type="date"
+                name="applicationDeadline"
+                placeholder="applicationdeadline"
+                className="input input-bordered"
+                required
+              />
             </div>
 
             {/* Submit Button */}
             <div className="pt-6">
               <button className="btn btn-primary w-full">Submit Job</button>
             </div>
-
           </form>
         </div>
       </div>

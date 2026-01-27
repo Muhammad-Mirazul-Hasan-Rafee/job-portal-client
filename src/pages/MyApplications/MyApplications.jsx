@@ -89,10 +89,10 @@ const MyApplications = () => {
                   </div>
                 </td>
                 <td>
-                  Zemlak, Daniel and Leannon
+                  {job.company}
                   <br />
                   <span className="badge badge-ghost badge-sm">
-                    Desktop Support Technician
+                    {job.title}
                   </span>
                 </td>
                 <td>Purple</td>
